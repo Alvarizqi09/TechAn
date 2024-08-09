@@ -3,7 +3,7 @@
 namespace Modules\Shop\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\factories\HasFactory;
 use App\Traits\UuidTrait;
 
 class Attribute extends Model

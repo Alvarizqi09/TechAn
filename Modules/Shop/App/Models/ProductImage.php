@@ -3,7 +3,7 @@
 namespace Modules\Shop\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\factories\HasFactory;
 
 use App\Traits\UuidTrait;
 
@@ -23,6 +23,6 @@ class ProductImage extends Model
     
     protected static function newFactory()
     {
-        return \Modules\Shop\Database\Factories\ProductImageFactory::new();
+        return \Modules\Shop\Database\factories\ProductImageFactory::new();
     }
 }

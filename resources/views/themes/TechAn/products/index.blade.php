@@ -72,7 +72,7 @@
             <div class="row">
               <div class="d-lg-flex justify-content-between align-items-center">
                 <div class="mb-3 mb-lg-0">
-                  <p class="mb-0"> <span class="text-dark">24 </span> Products found </p>
+                  &nbsp;
                 </div>
                 <div class="d-flex mt-2 mt-lg-0">
                   <div class="me-2 flex-grow-1">
@@ -106,20 +106,8 @@
               @endforelse
             </div>
             <div class="row mt-5">
-              <div class="col-12">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                  </ul>
-                </nav>
+                <div class="col-12">
+                  {{ $products->links() }} <!-- Menampilkan pagination -->
               </div>
             </div>
           </section>

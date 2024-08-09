@@ -5,15 +5,18 @@ namespace Modules\Shop\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Modules\Shop\App\Models\Product;
+use Modules\Shop\Repositories\Front\Interface\ProductRepositoryInterface;
 
 
 class ProductController extends Controller
 {
+    protected $productRepository;
 
-    public function __construct()
+    public function __construct(ProductRepositoryInterface $productRepository)
     {
         parent::__construct();
+
+        $this->productRepository = $productRepository;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +24,10 @@ class ProductController extends Controller
     public function index()
     
     {
-        $this->data['products'] = Product::paginate($this->perpage);
+        $options = [
+            'per_page' => $this->data['perpage']
+        ];
+        $this->data['products'] = $this->productRepository->findAll($options);
         return $this->loadTheme('products.index',$this->data);
     }
 

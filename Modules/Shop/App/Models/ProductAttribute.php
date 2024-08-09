@@ -3,7 +3,7 @@
 namespace Modules\Shop\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\factories\HasFactory;
 
 use App\Traits\UuidTrait;
 
@@ -32,7 +32,7 @@ class ProductAttribute extends Model
     
     protected static function newFactory()
     {
-        return \Modules\Shop\Database\Factories\ProductAttributeFactory::new();
+        return \Modules\Shop\Database\factories\ProductAttributeFactory::new();
     }
 
     public function product()

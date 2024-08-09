@@ -3,7 +3,7 @@
 namespace Modules\Shop\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\factories\HasFactory;
 
 use App\Traits\UuidTrait;
 class ProductInventory extends Model
@@ -22,6 +22,6 @@ class ProductInventory extends Model
     
     protected static function newFactory()
     {
-        return \Modules\Shop\Database\Factories\ProductInventoryFactory::new();
+        return \Modules\Shop\Database\factories\ProductInventoryFactory::new();
     }
 }

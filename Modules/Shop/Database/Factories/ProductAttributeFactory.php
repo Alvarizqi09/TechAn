@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Shop\Database\Factories;
+namespace Modules\Shop\Database\factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\factories\Factory;
 
 class ProductAttributeFactory extends Factory
 {
