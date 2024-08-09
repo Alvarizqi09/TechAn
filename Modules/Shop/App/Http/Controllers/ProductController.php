@@ -6,17 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Modules\Shop\Repositories\Front\Interface\ProductRepositoryInterface;
+use Modules\Shop\Repositories\Front\Interface\CategoryRepositoryInterface;
 
 
 class ProductController extends Controller
 {
     protected $productRepository;
+    protected $categoryRepository;
 
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(ProductRepositoryInterface $productRepository,CategoryRepositoryInterface $categoryRepository)
     {
         parent::__construct();
 
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
+
+        $this->data['categories'] = $this->categoryRepository->findAll();
+        
     }
     /**
      * Display a listing of the resource.
@@ -30,63 +36,17 @@ class ProductController extends Controller
         $this->data['products'] = $this->productRepository->findAll($options);
         return $this->loadTheme('products.index',$this->data);
     }
+    public function category($categorySlug){
+        $category = $this->categoryRepository->findbySlug($categorySlug);
+        $options = [
+            'per_page' => $this->data['perpage'],
+        
+            'filter' =>['category' => $categorySlug],
+        ];
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('shop::create');
-    }
+        $this->data['products'] = $this->productRepository->findAll($options);
+        $this->data['category'] = $category;
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('shop::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('shop::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->loadTheme('products.category',$this->data);
     }
 }
